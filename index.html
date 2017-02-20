@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" >
+<head>
+	<meta charset="UTF-8">
+	<title>ExchangeMoney</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/angular.min.js"></script>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+		    $scope.exchange = [
+		        {currency : "USD", othermoney : 34.9900},
+		        {currency : "EUR", othermoney : 37.1473},
+		        {currency : "JPY", othermoney : 0.310152}
+		    ];
+		    $scope.selectedCurrency = $scope.exchange[0];
+		});
+	</script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="center">
+			<div class="box">
+				<h1>Currency Exchange</h1>
+				<br><br>
+				<!-- <div class="SelectCurrency">
+					<select>
+					  <option value="USD">USD</option>
+					  <option value="EUR">EUR</option>
+					  <option value="JPY">JPY</option>
+					</select>
+				</div> -->
+
+				<div ng-controller="myCtrl">
+					
+
+					<p>THB</p>
+					<input type="number" ng-model="money" id="money" placeholder="Input your money" class="InputMoney" autofocus>
+					<div class="Con-Exchanged">
+						<select ng-init="selectedCurrency = selectedCurrency || x[0].currency" 
+								ng-model="selectedCurrency" 
+								ng-options="x.currency for x in exchange">
+						</select>
+						<p class="Exchanged">{{money / selectedCurrency.othermoney | currency:'':2}}</p>
+					</div>
+					
+				</div>
+				
+				<!-- <button id="btn1">Exchanged</button> -->
+			</div>
+
+
+			<footer>
+				<p>Develop by Kittaprd Puaime 13570110</p>
+			</footer>
+
+
+		</div>
+	</div>
+	
+	
+</body>
+</html>
